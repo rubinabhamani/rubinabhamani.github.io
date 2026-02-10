@@ -23,7 +23,8 @@ location: "Dallas, TX, USA"
 #-------------------------------
 # Contact links
 linkedln: "https://www.linkedin.com/in/rubinabhamani" # Add your linkedln handle
-github: "https://github.com/rubinabhamani"  # Add your github handle
+# github: "https://github.com/rubinabhamani"  # Add your github handle
+github: "https://rubinabhamani.github.io/"  # Add your github handle
 
 paginate: 6
 paginate_path: "/page/:num"
@@ -51,6 +52,7 @@ defaults:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
 
 
 
