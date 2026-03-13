@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Optimizing Predictive Performance Using Lasso Regression & Standard Scaling
-image: "/posts/ab-testing-title-img.png"
-tags: [Regularization, Feature Selection, Feature Selection, Python, Scikit-Learn]
+image: "/posts/Lasso_standardized_feature_importance.png"
+tags: [Regularization, Feature Selection, Lasso Regression, Python, Scikit-Learn]
 ---
 
 In this project, we implement Lasso Regression (L1 Regularization) to perform automated feature selection and build a robust model that avoids overfitting on high-dimensional data.
