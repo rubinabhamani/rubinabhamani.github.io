@@ -1,8 +1,7 @@
 ---
 layout: post
 title: Optimizing Predictive Performance Using Lasso Regression & Standard Scaling
-# image: "/posts/Lasso_standardized_feature_importance.png"
-<img src="/posts/Lasso_standardized_feature_importance.png" height="300px">
+image: "/posts/Lasso_standardized_feature_importance.png"
 header-style: "background-size: contain; background-repeat: no-repeat; background-position: top;"
 
 tags: [Regularization, Feature Selection, Lasso Regression, Python, Scikit-Learn]
@@ -148,6 +147,10 @@ ___
 # Analysing The Results <a name="lasso-standardized-results"></a>
 
 By plotting the coefficients, we can clearly see which features the model deemed important and which ones were discarded.
+
+<div style="max-height: 300px; overflow: hidden; display: flex; justify-content: center;">
+  <img src="/posts/Lasso_standardized_feature_importance.png" style="width: 100%; object-fit: cover;">
+</div>
 
 ```python
 
