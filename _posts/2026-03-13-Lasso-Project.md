@@ -3,7 +3,7 @@ layout: post
 title: Optimizing Predictive Performance Using Lasso Regression & Standard Scaling
 image: "/posts/Lasso_standardized_feature_importance.png"
 header-position: top
-header-style: "background-size: contain; background-repeat: no-repeat; background-position: top;"
+header-style: "background-size: contain; background-repeat: no-repeat; background-position: center top;"
 
 tags: [Regularization, Feature Selection, Lasso Regression, Python, Scikit-Learn]
 ---
