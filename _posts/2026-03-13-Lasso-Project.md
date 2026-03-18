@@ -163,6 +163,9 @@ plt.show()
 
 ```
 <br>
+
+![Feature Importance: Lasso Identifies Signal vs. Noise](Lasso_standardized_feature_importance.png)
+
 # Observations
 
 Signal: Features like Age and Income retained significant positive coefficients.
