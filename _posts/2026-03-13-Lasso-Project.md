@@ -1,11 +1,14 @@
 ---
 layout: post
 title: Optimizing Predictive Performance Using Lasso Regression & Standard Scaling
-image: "/posts/Lasso_standardized_feature_importance.png"
+image: 
 tags: [Regularization, Feature Selection, Lasso Regression, Python, Scikit-Learn]
 ---
 
-In this project, we implement Lasso Regression (L1 Regularization) to perform automated feature selection and build a robust model that avoids overfitting on high-dimensional data.
+## Executive Summary
+The Problem: A high-dimensional financial dataset (30+ features) led to an overfit Linear Regression model that failed to generalize to new customers.
+The Solution: Implemented Lasso Regression (L1 Regularized) with Standard Scaling to automate feature selection and reduce model complexity.
+** The Result:** Successfully zeroed out 25 non-predictive features, reducing the feature space by 83% while maintaining predictive power and increasing model interpretability for stakeholders.
 
 # Table of contents
 
@@ -67,7 +70,7 @@ It discourages the model from learning the training data too closely (memorizing
 
 Lasso (Least Absolute Shrinkage and Selection Operator) is a type of linear regression that uses L1 regularization. It adds a penalty equal to the absolute value of the magnitude of coefficients:
 
-Cost = RSS + \lambda \sum |\beta_j|
+$$Cost = RSS + \lambda \sum_{j=1}^{p} |\beta_j|$$
 
 The unique power of Lasso is that it can force coefficients to exactly zero, effectively performing Automated Feature Selection.
 
@@ -142,29 +145,35 @@ feat_importance = pd.DataFrame({
 ___
 
 <br>
+
 # Analysing The Results <a name="lasso-standardized-results"></a>
 
 By plotting the coefficients, we can clearly see which features the model deemed important and which ones were discarded.
 
-<div style="max-height: 300px; overflow: hidden; display: flex; justify-content: center;">
-  <img src="/posts/Lasso_standardized_feature_importance.png" style="width: 100%; object-fit: cover;">
+<div align="center">
+  <img src="Lasso_standardized_feature_importance.png" alt="Lasso Feature Importance" width="800">
 </div>
 
 ```python
-
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-plt.figure(figsize=(10, 8))
-sns.barplot(x='Coefficient', y='Feature', data=feat_importance, palette='magma')
-plt.axvline(x=0, color='red', linestyle='--')
-plt.title('Feature Importance: Lasso Standardized Coefficients')
-plt.show()
+# 1. Use a clean, professional style
+plt.style.use('fivethirtyeight') # Or 'seaborn-v0_8-whitegrid'
 
+plt.figure(figsize=(10, 8))
+# 2. Filter out the zeros so the plot isn't cluttered with 25 empty lines
+active_feats = feat_importance[feat_importance['Coefficient'] != 0]
+
+sns.barplot(x='Coefficient', y='Feature', data=active_feats, palette='magma')
+plt.axvline(x=0, color='red', linestyle='--')
+plt.title('Feature Importance: Lasso Standardized Coefficients', fontsize=16)
+
+# 3. Save it with high resolution for GitHub
+plt.savefig('Lasso_standardized_feature_importance.png', dpi=300, bbox_inches='tight')
+plt.show()
 ```
 <br>
-
-![Feature Importance: Lasso Identifies Signal vs. Noise](Lasso_standardized_feature_importance.png)
 
 # Observations
 
@@ -173,6 +182,19 @@ Signal: Features like Age and Income retained significant positive coefficients.
 Noise: Over 20 features had their coefficients reduced to 0.0, showing they provided no unique predictive value.
 
 ___
+
+from sklearn.metrics import mean_squared_error, r2_score
+import numpy as np
+
+# Make predictions
+y_pred = lasso.predict(X_test_scaled)
+
+# Calculate Metrics
+rmse = np.sqrt(mean_squared_error(y_test, y_pred))
+r2 = r2_score(y_test, y_pred)
+
+print(f"Root Mean Squared Error: {rmse:.2f}")
+print(f"R-squared Score: {r2:.2f}")
 
 <br>
 # Discussion <a name="discussion"></a>
