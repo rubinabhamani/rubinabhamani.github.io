@@ -2,6 +2,7 @@
 layout: post
 title: Optimizing Predictive Performance Using Lasso Regression & Standard Scaling
 image: 
+read_time: 10 min
 tags: [Regularization, Feature Selection, Lasso Regression, Python, Scikit-Learn]
 ---
 
